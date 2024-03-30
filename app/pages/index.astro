@@ -1,0 +1,19 @@
+---
+import CodeBlock from "@components/CodeBlock.astro";
+import Layout from "@layouts/Layout.astro";
+import { css } from "styled-system/css";
+import { grid } from "styled-system/patterns";
+---
+
+<Layout title="Kitto">
+  <span class={css({ fontSize: "6xl", color: "primary", fontWeight: "bold" })}>
+    Kitto
+  </span>
+  <div class={grid({ columns: 2, gap: "4" })}>
+    <CodeBlock
+      code={`const lala = 'oui'; \nconst lala = 'oui';`}
+      lang={"typescript"}
+    />
+    <CodeBlock code={`const lala = 'non';`} lang={"typescript"} />
+  </div>
+</Layout>

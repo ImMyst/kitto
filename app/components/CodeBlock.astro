@@ -1,0 +1,13 @@
+---
+import type { ComponentProps } from "astro/types";
+import { Code } from "astro:components";
+import { css } from "styled-system/css";
+
+interface Props extends ComponentProps<typeof Code> {}
+
+const { code = `const default = 'Default';`, ...rest } = Astro.props;
+---
+
+<div class={css({ padding: 4 })}>
+  <Code code={code} {...rest as any} />
+</div>
