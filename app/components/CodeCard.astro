@@ -1,0 +1,71 @@
+---
+import { css } from "styled-system/css";
+import CodeBlock from "@components/CodeBlock.astro";
+import TagChip from "@components/Tag.astro";
+import type { ComponentProps } from "astro/types";
+import type { Code } from "astro:components";
+import type { Tag } from "app/types/Tag";
+import { cx } from "styled-system/css";
+
+interface Props extends ComponentProps<typeof Code> {
+  title: string;
+  tags: Tag[];
+}
+
+const {
+  code = `const default = 'Default';`,
+  title,
+  tags,
+  ...rest
+} = Astro.props;
+---
+
+<div
+  class={cx(
+    css({
+      borderWidth: 1,
+      h: "full",
+      p: 2,
+      rounded: "md",
+      borderColor: "gray.600",
+      ringOffset: 2,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      _hover: {
+        borderColor: "red.800",
+        borderStyle: "dashed",
+        bg: "red.950/10",
+        cursor: "pointer",
+        transitionDuration: "fast",
+      },
+    }),
+    "card"
+  )}
+>
+  <CodeBlock {code} {...rest} />
+  <section
+    class={css({
+      w: "full",
+      display: "flex",
+      py: 2,
+      alignSelf: "end",
+      placeItems: "center",
+      justifyContent: "end",
+    })}
+  >
+    <span
+      class={css({
+        color: "white",
+        w: "10/12",
+      })}
+    >
+      {title}
+    </span>
+    <div
+      class={css({ display: "flex", justifyContent: "end", w: "full", gap: 1 })}
+    >
+      {tags.map((tag) => <TagChip {tag} />)}
+    </div>
+  </section>
+</div>

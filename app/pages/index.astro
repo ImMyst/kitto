@@ -1,19 +1,43 @@
 ---
-import CodeBlock from "@components/CodeBlock.astro";
+import CodeCard from "@components/CodeCard.astro";
 import Layout from "@layouts/Layout.astro";
 import { css } from "styled-system/css";
 import { grid } from "styled-system/patterns";
 ---
 
 <Layout title="Kitto">
-  <span class={css({ fontSize: "6xl", color: "primary", fontWeight: "bold" })}>
-    Kitto
-  </span>
-  <div class={grid({ columns: 2, gap: "4" })}>
-    <CodeBlock
-      code={`const lala = 'oui'; \nconst lala = 'oui';`}
-      lang={"typescript"}
-    />
-    <CodeBlock code={`const lala = 'non';`} lang={"typescript"} />
-  </div>
+  <section>
+    <span
+      class={css({
+        fontSize: "6xl",
+        p: 4,
+        color: "primary",
+        fontWeight: "bold",
+      })}
+    >
+      Kitto
+    </span>
+    <div class={grid({ columns: 2, gap: "4" })}>
+      <CodeCard
+        title="Test 1"
+        tags={[
+          { libelle: "Typescript", color: "blue" },
+          { libelle: "Test", color: "orange" },
+        ]}
+        code={`const lala = 'oui'; \nconst lala = 'oui';`}
+        lang={"typescript"}
+      />
+      <CodeCard
+        title="Test 2"
+        tags={[
+          { libelle: "Javascript", color: "green" },
+          { libelle: "Test", color: "blue" },
+        ]}
+        code={`const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL
+                                        ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')
+                                        : additionalColumns;`}
+        lang={"javascript"}
+      />
+    </div>
+  </section>
 </Layout>

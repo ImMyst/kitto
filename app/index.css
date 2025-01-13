@@ -10,8 +10,7 @@ pre code {
     line-height: 1.25;
     padding: 0.5rem;
     padding-left: 0.5rem;
-	font-size: 14px;
-	border-left: 1px solid rgba(115, 138, 148, 0.4);
+	font-size: 12px;
 	counter-reset: step;
 	counter-increment: step 0;
 }
