@@ -1,8 +1,11 @@
 ---
 import CodeCard from "@components/CodeCard.astro";
 import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
 import { css } from "styled-system/css";
 import { grid } from "styled-system/patterns";
+
+const allSnippets = await getCollection("snippets");
 ---
 
 <script>
@@ -63,30 +66,18 @@ import { grid } from "styled-system/patterns";
       Kitto
     </span>
     <div class={grid({ columns: 2, gap: "4" })}>
-      <div data-copy>
-        <CodeCard
-          title="Test 1"
-          tags={[
-            { libelle: "Typescript", color: "blue" },
-            { libelle: "Test", color: "orange" },
-          ]}
-          code={`const lala = 'oui'; \nconst lala = 'oui';`}
-          lang="typescript"
-        />
-      </div>
-      <div data-copy>
-        <CodeCard
-          title="Test 2"
-          tags={[
-            { libelle: "Javascript", color: "green" },
-            { libelle: "Test", color: "blue" },
-          ]}
-          code={`const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL
-                                        ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')
-                                        : additionalColumns;`}
-          lang="javascript"
-        />
-      </div>
+      {
+        allSnippets.map((snippet) => (
+          <div data-copy>
+            <CodeCard
+              title={snippet.data.title}
+              tags={snippet.data.tags}
+              code={snippet.data.code}
+              lang={snippet.data.lang}
+            />
+          </div>
+        ))
+      }
     </div>
   </section>
 </Layout>

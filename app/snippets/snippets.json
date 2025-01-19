@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Test 1",
+    "tags": [
+      { "libelle": "Typescript", "color": "blue" },
+      { "libelle": "Test", "color": "orange" }
+    ],
+    "code": "const lala = 'oui'; \nconst lala = 'oui';",
+    "lang": "typescript"
+  },
+  {
+    "id": 2,
+    "title": "Test 2",
+    "tags": [
+      { "libelle": "Javascript", "color": "green" },
+      { "libelle": "Test", "color": "blue" }
+    ],
+    "code": "const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL\n ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')\n : additionalColumns;",
+    "lang": "javascript"
+  }
+]
