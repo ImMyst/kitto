@@ -12,6 +12,7 @@ import { grid } from "styled-system/patterns";
   ) => {
     await navigator.clipboard.writeText(block.innerText);
     snackbar?.classList.replace("d_none", "d_flex");
+
     setTimeout(() => {
       snackbar?.classList.replace("d_flex", "d_none");
     }, 3000);
