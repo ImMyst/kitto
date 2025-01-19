@@ -1,9 +1,8 @@
 ---
 import { css } from "styled-system/css";
-import CodeBlock from "@components/CodeBlock.astro";
 import TagChip from "@components/Tag.astro";
 import type { ComponentProps } from "astro/types";
-import type { Code } from "astro:components";
+import { Code } from "astro:components";
 import type { Tag } from "app/types/Tag";
 import { cx } from "styled-system/css";
 
@@ -43,7 +42,7 @@ const {
     "card"
   )}
 >
-  <CodeBlock {code} {...rest} />
+  <Code wrap {code} theme={"one-dark-pro"} {...rest} />
   <section
     class={css({
       w: "full",

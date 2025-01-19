@@ -5,8 +5,52 @@ import { css } from "styled-system/css";
 import { grid } from "styled-system/patterns";
 ---
 
+<script>
+  const handleCopy = async (
+    block: HTMLPreElement,
+    snackbar: Element | null
+  ) => {
+    await navigator.clipboard.writeText(block.innerText);
+    snackbar?.classList.replace("d_none", "d_flex");
+    setTimeout(() => {
+      snackbar?.classList.replace("d_flex", "d_none");
+    }, 3000);
+  };
+
+  const cards = document.querySelectorAll("[data-copy]");
+  const snackbar = document.querySelector("[data-snackbar]");
+
+  cards.forEach((card) => {
+    const blocks = card.querySelectorAll("pre");
+    blocks.forEach((block) => {
+      card.addEventListener("click", () => handleCopy(block, snackbar));
+    });
+  });
+</script>
+
 <Layout title="Kitto">
   <section>
+    <span
+      data-snackbar
+      class={css({
+        display: "none",
+        position: "absolute",
+        justifyContent: "center",
+        alignItems: "center",
+        color: "red.700",
+        top: 3,
+        left: 0,
+        right: 0,
+        borderWidth: 1,
+        py: 1.5,
+        px: 2,
+        width: "fit-content",
+        ml: "auto",
+        mr: "auto",
+      })}
+    >
+      Copié
+    </span>
     <span
       class={css({
         fontSize: "6xl",
@@ -18,26 +62,30 @@ import { grid } from "styled-system/patterns";
       Kitto
     </span>
     <div class={grid({ columns: 2, gap: "4" })}>
-      <CodeCard
-        title="Test 1"
-        tags={[
-          { libelle: "Typescript", color: "blue" },
-          { libelle: "Test", color: "orange" },
-        ]}
-        code={`const lala = 'oui'; \nconst lala = 'oui';`}
-        lang={"typescript"}
-      />
-      <CodeCard
-        title="Test 2"
-        tags={[
-          { libelle: "Javascript", color: "green" },
-          { libelle: "Test", color: "blue" },
-        ]}
-        code={`const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL
+      <div data-copy>
+        <CodeCard
+          title="Test 1"
+          tags={[
+            { libelle: "Typescript", color: "blue" },
+            { libelle: "Test", color: "orange" },
+          ]}
+          code={`const lala = 'oui'; \nconst lala = 'oui';`}
+          lang="typescript"
+        />
+      </div>
+      <div data-copy>
+        <CodeCard
+          title="Test 2"
+          tags={[
+            { libelle: "Javascript", color: "green" },
+            { libelle: "Test", color: "blue" },
+          ]}
+          code={`const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL
                                         ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')
                                         : additionalColumns;`}
-        lang={"javascript"}
-      />
+          lang="javascript"
+        />
+      </div>
     </div>
   </section>
 </Layout>
