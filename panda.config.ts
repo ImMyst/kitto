@@ -16,7 +16,8 @@ export default defineConfig({
       tokens: {
         colors: {
           primary: { value: "oklch(0.577 0.245 27.325)" },
-          secondary: { value: "oklch(23.46% 0 0)" },
+          secondary: { value: "oklch(0.16 0 0)" },
+          secondaryLight: { value: "oklch(0.21 0 0)" },
         },
       },
     },

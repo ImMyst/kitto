@@ -3,7 +3,7 @@ import { file } from "astro/loaders";
 import { SnippetType } from "app/types/Snippet";
 
 const snippets = defineCollection({
-  loader: file("app/snippets/snippets.json"),
+  loader: file("app/content/snippets/snippets.json"),
   schema: SnippetType,
 });
 

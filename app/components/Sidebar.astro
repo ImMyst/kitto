@@ -1,0 +1,72 @@
+---
+import type { Tag } from "app/types/Tag";
+import { css } from "styled-system/css";
+interface Props {
+  tags: Tag[];
+}
+
+const { tags } = Astro.props;
+
+const tagCounts = tags.reduce((acc: { [key: string]: number }, tag) => {
+  acc[tag.libelle] = (acc[tag.libelle] || 0) + 1;
+  return acc;
+}, {});
+
+const uniqueTagsWithCounts = Object.keys(tagCounts).map((libelle) => {
+  const originalTag = tags.find((tag) => tag.libelle === libelle);
+  return {
+    ...originalTag,
+    count: tagCounts[libelle],
+  };
+});
+---
+
+<aside
+  class={css({
+    bg: "secondaryLight",
+    h: "72",
+    rounded: "md",
+    position: "sticky",
+    top: 0,
+    display: "flex",
+    p: 4,
+    minWidth: "48",
+    flexDirection: "column",
+    borderWidth: 1,
+    borderColor: "neutral.700",
+  })}
+>
+  <span
+    class={css({
+      fontSize: "sm",
+      color: "neutral.400",
+    })}
+  >
+    Tags
+  </span>
+  <div
+    class={css({
+      mt: 2,
+      display: "flex",
+      flexDirection: "column",
+      gap: 0.5,
+    })}
+  >
+    {
+      uniqueTagsWithCounts.map((tag) => (
+        <div
+          class={css({
+            fontSize: "sm",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            color: "neutral.50",
+          })}
+        >
+          <span>{tag.libelle}</span>
+          <span>{tag.count}</span>
+        </div>
+      ))
+    }
+  </div>
+</aside>

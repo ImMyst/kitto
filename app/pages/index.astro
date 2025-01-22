@@ -1,11 +1,14 @@
 ---
 import CodeCard from "@components/CodeCard.astro";
+import Sidebar from "@components/Sidebar.astro";
 import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { css } from "styled-system/css";
 import { grid } from "styled-system/patterns";
 
 const allSnippets = await getCollection("snippets");
+const snippets = allSnippets.map((snippet) => snippet.data);
+const tags = snippets.flatMap((snippet) => snippet.tags);
 ---
 
 <script>
@@ -35,46 +38,27 @@ const allSnippets = await getCollection("snippets");
 </script>
 
 <Layout title="Kitto">
-  <section
-    class={css({
-      display: "flex",
+  <Sidebar tags={tags} />
+  <div
+    class={grid({
+      columns: { md: 2, lg: 3 },
+      gap: "4",
       overflowY: "auto",
-      h: "screen",
-      p: 4,
-      gap: 4,
     })}
   >
-    <span
-      class={css({
-        fontSize: "6xl",
-        p: 4,
-        color: "primary",
-        fontWeight: "bold",
-      })}
-    >
-      Kitto
-    </span>
-    <div
-      class={grid({
-        columns: 3,
-        gap: "4",
-        h: "full",
-      })}
-    >
-      {
-        allSnippets.map((snippet) => (
-          <div data-copy>
-            <CodeCard
-              title={snippet.data.title}
-              tags={snippet.data.tags}
-              code={snippet.data.code}
-              lang={snippet.data.lang}
-            />
-          </div>
-        ))
-      }
-    </div>
-  </section>
+    {
+      snippets.map((snippet) => (
+        <div data-copy>
+          <CodeCard
+            title={snippet.title}
+            tags={snippet.tags}
+            code={snippet.code}
+            lang={snippet.lang}
+          />
+        </div>
+      ))
+    }
+  </div>
   <span
     data-snackbar
     class={css({
