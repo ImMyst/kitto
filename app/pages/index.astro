@@ -14,10 +14,12 @@ const allSnippets = await getCollection("snippets");
     snackbar: Element | null
   ) => {
     await navigator.clipboard.writeText(block.innerText);
-    snackbar?.classList.replace("d_none", "d_flex");
+    snackbar?.classList.add("show");
+    snackbar?.classList.remove("hide");
 
     setTimeout(() => {
-      snackbar?.classList.replace("d_flex", "d_none");
+      snackbar?.classList.remove("show");
+      snackbar?.classList.add("hide");
     }, 3000);
   };
 
@@ -33,28 +35,15 @@ const allSnippets = await getCollection("snippets");
 </script>
 
 <Layout title="Kitto">
-  <section>
-    <span
-      data-snackbar
-      class={css({
-        display: "none",
-        position: "absolute",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "red.700",
-        top: 3,
-        left: 0,
-        right: 0,
-        borderWidth: 1,
-        py: 1.5,
-        px: 2,
-        width: "fit-content",
-        ml: "auto",
-        mr: "auto",
-      })}
-    >
-      Copié
-    </span>
+  <section
+    class={css({
+      display: "flex",
+      overflowY: "auto",
+      h: "screen",
+      p: 4,
+      gap: 4,
+    })}
+  >
     <span
       class={css({
         fontSize: "6xl",
@@ -65,7 +54,13 @@ const allSnippets = await getCollection("snippets");
     >
       Kitto
     </span>
-    <div class={grid({ columns: 2, gap: "4" })}>
+    <div
+      class={grid({
+        columns: 3,
+        gap: "4",
+        h: "full",
+      })}
+    >
       {
         allSnippets.map((snippet) => (
           <div data-copy>
@@ -80,4 +75,43 @@ const allSnippets = await getCollection("snippets");
       }
     </div>
   </section>
+  <span
+    data-snackbar
+    class={css({
+      rounded: "full",
+      position: "absolute",
+      justifyContent: "center",
+      alignItems: "center",
+      color: "green.300",
+      backgroundColor: "green.950",
+      borderColor: "green.800",
+      bottom: "0",
+      left: 0,
+      right: 0,
+      borderWidth: 1,
+      py: 1.5,
+      px: 4,
+      width: "fit-content",
+      ml: "auto",
+      mr: "auto",
+      transition: "transform 0.1s ease-in-out",
+    })}
+  >
+    Copié
+  </span>
 </Layout>
+
+<style>
+  [data-snackbar] {
+    transform: translateY(150%);
+  }
+
+  [data-snackbar].show {
+    transform: translateY(-100%);
+  }
+
+  [data-snackbar].hide {
+    /* opacity: 0; */
+    transform: translateY(150%);
+  }
+</style>

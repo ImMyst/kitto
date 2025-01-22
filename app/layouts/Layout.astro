@@ -22,7 +22,13 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class={css({ backgroundColor: "secondary" })}>
+  <body
+    class={css({
+      backgroundColor: "secondary",
+      h: "screen",
+      overflow: "hidden",
+    })}
+  >
     <slot />
   </body>
 </html>

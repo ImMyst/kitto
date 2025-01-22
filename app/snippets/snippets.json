@@ -18,5 +18,145 @@
     ],
     "code": "const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL\n ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')\n : additionalColumns;",
     "lang": "javascript"
+  },
+  {
+    "id": 3,
+    "title": "Test 1",
+    "tags": [
+      { "libelle": "Typescript", "color": "blue" },
+      { "libelle": "Test", "color": "orange" }
+    ],
+    "code": "const lala = 'oui'; \nconst lala = 'oui';",
+    "lang": "typescript"
+  },
+  {
+    "id": 4,
+    "title": "Test 2",
+    "tags": [
+      { "libelle": "Javascript", "color": "green" },
+      { "libelle": "Test", "color": "blue" }
+    ],
+    "code": "const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL\n ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')\n : additionalColumns;",
+    "lang": "javascript"
+  },
+  {
+    "id": 5,
+    "title": "Test 1",
+    "tags": [
+      { "libelle": "Typescript", "color": "blue" },
+      { "libelle": "Test", "color": "orange" }
+    ],
+    "code": "const lala = 'oui'; \nconst lala = 'oui';",
+    "lang": "typescript"
+  },
+  {
+    "id": 6,
+    "title": "Test 2",
+    "tags": [
+      { "libelle": "Javascript", "color": "green" },
+      { "libelle": "Test", "color": "blue" }
+    ],
+    "code": "const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL\n ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')\n : additionalColumns;",
+    "lang": "javascript"
+  },
+  {
+    "id": 7,
+    "title": "Test 1",
+    "tags": [
+      { "libelle": "Typescript", "color": "blue" },
+      { "libelle": "Test", "color": "orange" }
+    ],
+    "code": "const lala = 'oui'; \nconst lala = 'oui';",
+    "lang": "typescript"
+  },
+  {
+    "id": 8,
+    "title": "Test 2",
+    "tags": [
+      { "libelle": "Javascript", "color": "green" },
+      { "libelle": "Test", "color": "blue" }
+    ],
+    "code": "const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL\n ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')\n : additionalColumns;",
+    "lang": "javascript"
+  },
+  {
+    "id": 9,
+    "title": "Test 1",
+    "tags": [
+      { "libelle": "Typescript", "color": "blue" },
+      { "libelle": "Test", "color": "orange" }
+    ],
+    "code": "const lala = 'oui'; \nconst lala = 'oui';",
+    "lang": "typescript"
+  },
+  {
+    "id": 10,
+    "title": "Test 2",
+    "tags": [
+      { "libelle": "Javascript", "color": "green" },
+      { "libelle": "Test", "color": "blue" }
+    ],
+    "code": "const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL\n ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')\n : additionalColumns;",
+    "lang": "javascript"
+  },
+  {
+    "id": 11,
+    "title": "Test 1",
+    "tags": [
+      { "libelle": "Typescript", "color": "blue" },
+      { "libelle": "Test", "color": "orange" }
+    ],
+    "code": "const lala = 'oui'; \nconst lala = 'oui';",
+    "lang": "typescript"
+  },
+  {
+    "id": 12,
+    "title": "Test 2",
+    "tags": [
+      { "libelle": "Javascript", "color": "green" },
+      { "libelle": "Test", "color": "blue" }
+    ],
+    "code": "const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL\n ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')\n : additionalColumns;",
+    "lang": "javascript"
+  },
+  {
+    "id": 13,
+    "title": "Test 1",
+    "tags": [
+      { "libelle": "Typescript", "color": "blue" },
+      { "libelle": "Test", "color": "orange" }
+    ],
+    "code": "const lala = 'oui'; \nconst lala = 'oui';",
+    "lang": "typescript"
+  },
+  {
+    "id": 14,
+    "title": "Test 2",
+    "tags": [
+      { "libelle": "Javascript", "color": "green" },
+      { "libelle": "Test", "color": "blue" }
+    ],
+    "code": "const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL\n ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')\n : additionalColumns;",
+    "lang": "javascript"
+  },
+  {
+    "id": 15,
+    "title": "Test 1",
+    "tags": [
+      { "libelle": "Typescript", "color": "blue" },
+      { "libelle": "Test", "color": "orange" }
+    ],
+    "code": "const lala = 'oui'; \nconst lala = 'oui';",
+    "lang": "typescript"
+  },
+  {
+    "id": 16,
+    "title": "Test 2",
+    "tags": [
+      { "libelle": "Javascript", "color": "green" },
+      { "libelle": "Test", "color": "blue" }
+    ],
+    "code": "const filteredAdditionalColumns = currentVue?.id === VUE_JOURNAL_SALAIRE_FULL\n ? additionalColumns.filter((col) => col?.name !== 'lbu_taux_sal' && col?.name !== 'lbu_taux_pat')\n : additionalColumns;",
+    "lang": "javascript"
   }
 ]
