@@ -26,6 +26,7 @@ const tags = snippets.flatMap((snippet) => snippet.tags);
     }, 3000);
   };
 
+  // Snackbar
   const cards = document.querySelectorAll("[data-copy]");
   const snackbar = document.querySelector("[data-snackbar]");
 
@@ -34,6 +35,15 @@ const tags = snippets.flatMap((snippet) => snippet.tags);
     blocks.forEach((block) => {
       card.addEventListener("click", () => handleCopy(block, snackbar));
     });
+  });
+
+  // Search focus
+  const searchbar = document.getElementById("search");
+  window.addEventListener("keydown", (e) => {
+    if (e.metaKey && e.key === "k") {
+      e.preventDefault();
+      searchbar?.focus();
+    }
   });
 </script>
 
