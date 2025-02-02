@@ -1,6 +1,5 @@
-import { TagType } from "app/types/Tag";
-import { z } from "astro:content";
-import { bundledLanguages } from "shiki";
+import { TagType } from "./Tag";
+import { z } from "zod";
 
 export const SnippetType = z.object({
   id: z.number(),

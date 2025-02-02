@@ -1,4 +1,4 @@
-import { z } from "astro:content";
+import { z } from "zod";
 
 export const TagType = z.object({
   libelle: z.string(),

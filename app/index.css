@@ -31,3 +31,16 @@ pre code .line::before {
 	counter-increment: step;
 	color: rgba(115, 138, 148, 0.4);
 }
+
+[data-snackbar] {
+    transform: translateY(150%);
+}
+
+[data-snackbar].show {
+    transform: translateY(-100%);
+}
+
+[data-snackbar].hide {
+    /* opacity: 0; */
+    transform: translateY(150%);
+}

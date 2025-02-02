@@ -4,7 +4,8 @@
 
 Build with
 
-- Astro
+- React 19
+- Vite
 - PandaCSS
 - Bun
 
