@@ -1,14 +1,17 @@
 import { useEffect, useRef } from "react";
 import { css } from "../../styled-system/css";
 
-function Search() {
-  //   const { onSearch } = props;
+interface Props {
+  setSearchQuery: (searchQuery: string) => void;
+}
 
-  // const handleChange = (e) => {
-  //   const value = e.target.value;
-  //   setQuery(value);
-  //   // onSearch(value.toLowerCase());
-  // };
+function Search(props: Props) {
+  const { setSearchQuery } = props;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+  };
 
   const ref = useRef<HTMLInputElement>(null);
 
@@ -27,23 +30,13 @@ function Search() {
   return (
     <input
       ref={ref}
+      onChange={handleChange}
       className={css({
+        ring: "none",
+        ringOffset: "none",
         w: "full",
-        px: 2,
-        py: 1.5,
-        bg: "neutral.500/10",
-        color: "neutral.50",
-        rounded: "md",
-        fontSize: "sm",
-        border: 0,
-        _placeholder: {
-          color: "neutral.400",
-          fontSize: "sm",
-        },
-        _focus: {
-          outline: "none",
-          bg: "neutral.500/20",
-        },
+        bgColor: "transparent",
+        color: "inherit",
       })}
       placeholder="Search snippets..."
       type="search"

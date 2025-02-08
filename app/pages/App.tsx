@@ -7,54 +7,39 @@ import { Snippet } from "../types/Snippet";
 import { Toaster } from "sonner";
 import { Fragment } from "react/jsx-runtime";
 import { css } from "../../styled-system/css";
-
-const snippets = snippetsJson as Snippet[];
-const tags = snippets.flatMap((snippet) => snippet.tags);
+import { useCallback, useState } from "react";
+import { Tag } from "@/types/Tag";
 
 function App() {
-  // const snippets = snippetsData.filter(
-  //   (snippet) =>
-  //     snippet.title.toLowerCase().includes(searchQuery) ||
-  //     snippet.tags.some((tag) => tag.libelle.toLowerCase().includes(searchQuery))
-  // );
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredTags, setFilteredTags] = useState<Tag[]>([]);
 
-  //   {
-  /* <script>
-  const handleCopy = async (
-    block: HTMLPreElement,
-    snackbar: Element | null
-  ) => {
-    await navigator.clipboard.writeText(block.innerText);
-    snackbar?.classList.add("show");
-    snackbar?.classList.remove("hide");
+  const snippets = snippetsJson as Snippet[];
+  const tags = snippets.flatMap((snippet) => snippet.tags);
 
-    setTimeout(() => {
-      snackbar?.classList.remove("show");
-      snackbar?.classList.add("hide");
-    }, 3000);
-  };
+  const filteredSnippets = snippets.filter((snippet) => {
+    const matchesSearchQuery =
+      snippet.title.toLowerCase().includes(searchQuery) ||
+      snippet.tags.some((tag) =>
+        tag.libelle.toLowerCase().includes(searchQuery)
+      );
 
-  // Snackbar
-  const cards = document.querySelectorAll("[data-copy]");
-  const snackbar = document.querySelector("[data-snackbar]");
+    const matchesTags =
+      filteredTags.length === 0 ||
+      snippet.tags.some((tag) =>
+        filteredTags.some((filteredTag) => filteredTag.libelle === tag.libelle)
+      );
 
-  cards.forEach((card) => {
-    const blocks = card.querySelectorAll("pre");
-    blocks.forEach((block) => {
-      card.addEventListener("click", () => handleCopy(block, snackbar));
-    });
+    return matchesSearchQuery && matchesTags;
   });
 
-  // Search
-  const searchbar = document.getElementById("search");
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "/") {
-      e.preventDefault();
-      searchbar?.focus();
-    }
-  });
-</script> */
-  //   }
+  const handleSetSearchQuery = useCallback((searchQuery: string) => {
+    setSearchQuery(searchQuery);
+  }, []);
+
+  const handleSetFilteredTags = useCallback((tags: Tag[]) => {
+    setFilteredTags(tags);
+  }, []);
 
   return (
     <Fragment>
@@ -71,21 +56,47 @@ function App() {
         }}
       />
       <Layout>
-        <Sidebar tags={tags} />
-        <div
-          className={grid({
-            columns: { md: 2, lg: 3 },
-            gap: "4",
-            w: "full",
-            overflowY: "auto",
-          })}
-        >
-          {snippets.map((snippet) => (
-            <div key={snippet.id}>
-              <CodeCard snippet={snippet} />
-            </div>
-          ))}
-        </div>
+        <Sidebar
+          tags={tags}
+          setSearchQuery={handleSetSearchQuery}
+          handleSetFilteredTags={handleSetFilteredTags}
+          filteredTags={filteredTags}
+        />
+        {filteredSnippets.length === 0 ? (
+          <div
+            className={css({
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              h: "full",
+              w: "full",
+            })}
+          >
+            <span
+              className={css({
+                color: "neutral.500",
+                fontSize: "lg",
+              })}
+            >
+              No results
+            </span>
+          </div>
+        ) : (
+          <div
+            className={grid({
+              columns: { md: 2, lg: 3 },
+              h: "fit",
+              gap: "4",
+              w: "full",
+            })}
+          >
+            {filteredSnippets.map((snippet) => (
+              <div key={snippet.id}>
+                <CodeCard snippet={snippet} />
+              </div>
+            ))}
+          </div>
+        )}
       </Layout>
     </Fragment>
   );

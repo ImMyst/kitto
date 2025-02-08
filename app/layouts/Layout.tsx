@@ -26,6 +26,7 @@ function Layout(props: Props) {
           h: "full",
           minH: "full",
           display: "flex",
+          overflowY: "auto",
           gap: 4,
         })}
       >

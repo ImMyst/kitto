@@ -24,7 +24,7 @@ function CodeCard(props: Props) {
       className={cx(
         css({
           borderWidth: 1,
-          h: "full",
+          minH: "full",
           p: 2,
           rounded: "md",
           borderColor: "neutral.700",

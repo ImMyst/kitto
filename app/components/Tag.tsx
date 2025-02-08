@@ -9,6 +9,7 @@ interface Props {
 
 function Tag(props: Props) {
   const { tag } = props;
+
   return (
     <div
       key={tag.libelle}

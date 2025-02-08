@@ -7,6 +7,7 @@ interface Props {
 
 function Toast(props: Props) {
   const { children } = props;
+
   return (
     <div
       className={cx(
