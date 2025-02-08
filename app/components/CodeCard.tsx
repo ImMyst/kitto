@@ -3,6 +3,8 @@ import TagChip from "./Tag";
 import { cx } from "../../styled-system/css";
 import Code from "../components/Code";
 import { Snippet } from "../types/Snippet";
+import { toast } from "sonner";
+import Toast from "../components/Toast";
 
 interface Props {
   snippet: Snippet;
@@ -11,8 +13,14 @@ interface Props {
 function CodeCard(props: Props) {
   const { snippet, ...rest } = props;
 
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(snippet.code);
+    toast.custom(() => <Toast>{snippet.title} copié</Toast>);
+  };
+
   return (
     <div
+      onClick={handleCopy}
       className={cx(
         css({
           borderWidth: 1,

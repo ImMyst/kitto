@@ -4,6 +4,9 @@ import Layout from "../layouts/Layout";
 import { grid } from "../../styled-system/patterns";
 import snippetsJson from "../content/snippets/snippets.json";
 import { Snippet } from "../types/Snippet";
+import { Toaster } from "sonner";
+import { Fragment } from "react/jsx-runtime";
+import { css } from "../../styled-system/css";
 
 const snippets = snippetsJson as Snippet[];
 const tags = snippets.flatMap((snippet) => snippet.tags);
@@ -54,47 +57,37 @@ function App() {
   //   }
 
   return (
-    <Layout>
-      <Sidebar tags={tags} />
-      <div
-        className={grid({
-          columns: { md: 2, lg: 3 },
-          gap: "4",
-          w: "full",
-          overflowY: "auto",
-        })}
-      >
-        {snippets.map((snippet) => (
-          <div key={snippet.id}>
-            <CodeCard snippet={snippet} />
-          </div>
-        ))}
-      </div>
-      {/* <span
-        data-snackbar
-        className={css({
-          rounded: "full",
-          position: "absolute",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "green.300",
-          backgroundColor: "green.950",
-          borderColor: "green.800",
-          bottom: "0",
-          left: 0,
-          right: 0,
-          borderWidth: 1,
-          py: 1.5,
-          px: 4,
-          width: "fit-content",
-          ml: "auto",
-          mr: "auto",
-          transition: "transform 0.1s ease-in-out",
-        })}
-      >
-        Copié
-      </span> */}
-    </Layout>
+    <Fragment>
+      <Toaster
+        position="bottom-center"
+        expand={true}
+        toastOptions={{
+          className: css({
+            width: "full",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }),
+        }}
+      />
+      <Layout>
+        <Sidebar tags={tags} />
+        <div
+          className={grid({
+            columns: { md: 2, lg: 3 },
+            gap: "4",
+            w: "full",
+            overflowY: "auto",
+          })}
+        >
+          {snippets.map((snippet) => (
+            <div key={snippet.id}>
+              <CodeCard snippet={snippet} />
+            </div>
+          ))}
+        </div>
+      </Layout>
+    </Fragment>
   );
 }
 

@@ -16,6 +16,7 @@ pre code {
 	font-size: 12px;
 	counter-reset: step;
 	counter-increment: step 0;
+    white-space: pre-wrap;
 }
 
 pre code .line {
