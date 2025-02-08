@@ -1,11 +1,11 @@
 import CodeCard from "../components/CodeCard";
 import Sidebar from "../components/Sidebar";
 import Layout from "../layouts/Layout";
-import { css } from "../../styled-system/css";
 import { grid } from "../../styled-system/patterns";
 import snippetsJson from "../content/snippets/snippets.json";
+import { Snippet } from "../types/Snippet";
 
-const snippets = snippetsJson;
+const snippets = snippetsJson as Snippet[];
 const tags = snippets.flatMap((snippet) => snippet.tags);
 
 function App() {
@@ -60,21 +60,17 @@ function App() {
         className={grid({
           columns: { md: 2, lg: 3 },
           gap: "4",
+          w: "full",
           overflowY: "auto",
         })}
       >
         {snippets.map((snippet) => (
-          <div data-copy>
-            <CodeCard
-              title={snippet.title}
-              tags={snippet.tags}
-              code={snippet.code}
-              lang={snippet.lang}
-            />
+          <div key={snippet.id}>
+            <CodeCard snippet={snippet} />
           </div>
         ))}
       </div>
-      <span
+      {/* <span
         data-snackbar
         className={css({
           rounded: "full",
@@ -97,7 +93,7 @@ function App() {
         })}
       >
         Copié
-      </span>
+      </span> */}
     </Layout>
   );
 }

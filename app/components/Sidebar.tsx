@@ -118,6 +118,7 @@ function Sidebar(props: Props) {
       >
         {uniqueTagsWithCounts.map((tag) => (
           <div
+            key={tag.libelle}
             className={css({
               fontSize: "sm",
               display: "flex",

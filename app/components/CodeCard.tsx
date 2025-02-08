@@ -1,17 +1,15 @@
 import { css } from "../../styled-system/css";
 import TagChip from "./Tag";
-// import type { ComponentProps } from "astro/types";
-// import { Code } from "astro:components";
-import type { Tag } from "../types/Tag";
 import { cx } from "../../styled-system/css";
+import Code from "../components/Code";
+import { Snippet } from "../types/Snippet";
 
 interface Props {
-  title: string;
-  tags: Tag[];
+  snippet: Snippet;
 }
 
 function CodeCard(props: Props) {
-  const { code = `const default = 'Default';`, title, tags, ...rest } = props;
+  const { snippet, ...rest } = props;
 
   return (
     <div
@@ -38,7 +36,12 @@ function CodeCard(props: Props) {
         "card"
       )}
     >
-      {/* <Code wrap {code} theme={"one-dark-pro"} {...rest} /> */}
+      <Code
+        code={snippet.code ?? "Test"}
+        lang={snippet.lang}
+        theme={"one-dark-pro"}
+        {...rest}
+      />
       <section
         className={css({
           w: "full",
@@ -55,7 +58,7 @@ function CodeCard(props: Props) {
             w: "10/12",
           })}
         >
-          {title}
+          {snippet.title}
         </span>
         <div
           className={css({
@@ -65,8 +68,8 @@ function CodeCard(props: Props) {
             gap: 1,
           })}
         >
-          {tags.map((tag) => (
-            <TagChip tag={tag} />
+          {snippet.tags.map((tag) => (
+            <TagChip key={tag.libelle} tag={tag} />
           ))}
         </div>
       </section>

@@ -1,18 +1,32 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import { css } from "../../styled-system/css";
 
 function Search() {
   //   const { onSearch } = props;
-  const [query, setQuery] = useState("");
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setQuery(value);
-    // onSearch(value.toLowerCase());
-  };
+  // const handleChange = (e) => {
+  //   const value = e.target.value;
+  //   setQuery(value);
+  //   // onSearch(value.toLowerCase());
+  // };
+
+  const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "/") {
+        e.preventDefault();
+        ref.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
 
   return (
     <input
+      ref={ref}
       className={css({
         w: "full",
         px: 2,
@@ -35,8 +49,6 @@ function Search() {
       type="search"
       id="search"
       name="search"
-      value={query}
-      onChange={handleChange}
     />
   );
 }
