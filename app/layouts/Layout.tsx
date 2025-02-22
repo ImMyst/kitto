@@ -1,7 +1,7 @@
-import { css } from "../../styled-system/css";
-import "../index.css";
-import Header from "../components/Header";
 import { ReactNode } from "react";
+
+import { css } from "@ui/css";
+import Header from "@/components/Header";
 
 interface Props {
   children: ReactNode;

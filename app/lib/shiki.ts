@@ -1,5 +1,6 @@
-import { getHighlighter } from "./get-highlighter";
 import { BundledLanguage, BundledTheme } from "shiki";
+
+import { getHighlighter } from "@/lib/get-highlighter";
 
 interface HtmlArgs {
   code: string;

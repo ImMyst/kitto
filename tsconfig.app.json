@@ -25,6 +25,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["app/*"],
+      "@ui/*": ["styled-system/*"],
+      "@lib/*": ["app/lib/*"],
       "@components/*": ["app/components/*"],
       "@layouts/*": ["app/layouts/*"],
       "@content/*": ["app/content/*"],

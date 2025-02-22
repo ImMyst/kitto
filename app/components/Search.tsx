@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { css } from "../../styled-system/css";
+
+import { css } from "@ui/css";
 
 interface Props {
   setSearchQuery: (searchQuery: string) => void;

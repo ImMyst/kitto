@@ -1,4 +1,4 @@
-import { css } from "../../styled-system/css";
+import { css } from "@ui/css";
 
 export default function SearchIcon() {
   return (
