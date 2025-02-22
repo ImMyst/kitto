@@ -1,10 +1,10 @@
-import { css } from "../../styled-system/css";
-import TagChip from "./Tag";
-import { cx } from "../../styled-system/css";
-import Code from "../components/Code";
-import { Snippet } from "../types/Snippet";
 import { toast } from "sonner";
-import Toast from "../components/Toast";
+
+import Code from "@/components/Code";
+import Toast from "@/components/Toast";
+import { Snippet } from "@/types/Snippet";
+import { css, cx } from "@ui/css";
+import TagChip from "@/components/Tag";
 
 interface Props {
   snippet: Snippet;

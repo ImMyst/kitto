@@ -5,7 +5,7 @@ import {
   BundledTheme,
 } from "shiki";
 
-// ✅ Use Map to store Highlighter instance promises
+// Use Map to store Highlighter instance promises
 const highlighterCache = new Map<string, Promise<Highlighter>>();
 
 export async function getHighlighter({

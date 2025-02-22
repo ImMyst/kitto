@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { BundledLanguage, BundledTheme } from "shiki";
-import { css } from "../../styled-system/css";
-import { highlightCode } from "../lib/shiki";
+
+import { highlightCode } from "@/lib/shiki";
+import { css } from "@ui/css";
 
 interface Props {
   code: string;

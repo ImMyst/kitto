@@ -1,10 +1,11 @@
-import type { Tag } from "../types/Tag";
-import { css } from "../../styled-system/css";
-import { token } from "../../styled-system/tokens";
 import { CSSProperties } from "react";
 
+import { Tag as TagType } from "@/types/Tag";
+import { css } from "@ui/css";
+import { token } from "@ui/tokens";
+
 interface Props {
-  tag: Tag;
+  tag: TagType;
 }
 
 function Tag(props: Props) {

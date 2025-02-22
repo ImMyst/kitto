@@ -1,14 +1,15 @@
-import CodeCard from "../components/CodeCard";
-import Sidebar from "../components/Sidebar";
-import Layout from "../layouts/Layout";
-import { grid } from "../../styled-system/patterns";
-import snippetsJson from "../content/snippets/snippets.json";
-import { Snippet } from "../types/Snippet";
 import { Toaster } from "sonner";
 import { Fragment } from "react/jsx-runtime";
-import { css } from "../../styled-system/css";
 import { useCallback, useState } from "react";
+
 import { Tag } from "@/types/Tag";
+import { Snippet } from "@/types/Snippet";
+import { css } from "@ui/css";
+import { grid } from "@ui/patterns";
+import CodeCard from "@/components/CodeCard";
+import Sidebar from "@/components/Sidebar";
+import snippetsJson from "@content/snippets/snippets.json";
+import Layout from "@/layouts/Layout";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
